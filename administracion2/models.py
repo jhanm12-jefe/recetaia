@@ -56,4 +56,4 @@ class Favorito(models.Model):
     agregado_en = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.usuario.nombre} ♥ {self.receta.nombre}"
+        return f"{self.usuario.nombre} {self.receta.nombre}"

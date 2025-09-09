@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from administracion.views import prueba,crudRol
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('prueba/',prueba),
+    path('rol/',crudRol),
 ]
