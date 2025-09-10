@@ -16,9 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from administracion.views import prueba,crudRol
+from administracion.views import prueba,crudRol,crudRol_detail,crudUser,crudUser_detail
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('prueba/',prueba),
     path('rol/',crudRol),
+    path('user/',crudUser),
+    path('rol/<int:id>',crudRol_detail),
+    path('user/<int:id>',crudUser_detail),
 ]
+
