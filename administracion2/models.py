@@ -55,5 +55,5 @@ class Favorito(models.Model):
     receta = models.ForeignKey(Receta, on_delete=models.CASCADE)
     agregado_en = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
+    def __str__(self): 
         return f"{self.usuario.nombre} {self.receta.nombre}"

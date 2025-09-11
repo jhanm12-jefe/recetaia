@@ -1,4 +1,4 @@
-from administracion.models import Rol, User
+from administracion.models import Rol, User, Suscripcion
 from rest_framework import serializers
 
 class RolSerializer(serializers.ModelSerializer):
@@ -16,3 +16,15 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model= User
         fields = '__all__'        
+        
+class SuscripcionSerializer(serializers.ModelSerializer):
+    usuario = UserSerializer(read_only=True)
+    usuario_id = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all(),
+        source='usuario',
+        write_only=True
+    )
+
+    class Meta:
+        model = Suscripcion
+        fields = '__all__'

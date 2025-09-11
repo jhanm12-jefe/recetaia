@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from administracion.models import Rol, User
-from administracion.serializers import RolSerializer,UserSerializer
+from administracion.models import Rol, User , Suscripcion
+from administracion.serializers import RolSerializer,UserSerializer, SuscripcionSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
@@ -76,3 +76,39 @@ def crudUser_detail(request,id):
     if request.method == 'DELETE':
         user.delete()
         return Response("eliminar con exito")
+    
+@api_view(['GET','POST'])
+def crudSuscripcion(request):
+    if request.method == 'GET':
+        suscripciones = Suscripcion.objects.all()
+        serializer = SuscripcionSerializer(suscripciones, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = SuscripcionSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET','PUT','DELETE'])
+def crudSuscripcion_detail(request, id):
+    try:
+        suscripcion = Suscripcion.objects.get(pk=id)
+    except Suscripcion.DoesNotExist:
+        return Response("suscripción no encontrada", status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = SuscripcionSerializer(suscripcion)
+        return Response(serializer.data)
+
+    if request.method == 'PUT':
+        serializer = SuscripcionSerializer(suscripcion, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == 'DELETE':
+        suscripcion.delete()
+        return Response("eliminada con éxito")
