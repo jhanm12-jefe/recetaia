@@ -10,7 +10,7 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 
 
-# ------------------- INGREDIENTE -------------------
+
 @api_view(['GET','POST'])
 def crudIngrediente(request):
     if request.method == 'GET':
@@ -47,7 +47,7 @@ def crudIngrediente_detail(request, id):
         return Response("eliminado con éxito")
 
 
-# ------------------- RECETA -------------------
+
 @api_view(['GET','POST'])
 def crudReceta(request):
     if request.method == 'GET':
@@ -84,7 +84,7 @@ def crudReceta_detail(request, id):
         return Response("eliminado con éxito")
 
 
-# ------------------- PASO RECETA -------------------
+
 @api_view(['GET','POST'])
 def crudPasoReceta(request):
     if request.method == 'GET':
@@ -121,7 +121,7 @@ def crudPasoReceta_detail(request, id):
         return Response("eliminado con éxito")
 
 
-# ------------------- RECETA INGREDIENTE -------------------
+
 @api_view(['GET','POST'])
 def crudRecetaIngrediente(request):
     if request.method == 'GET':
@@ -158,7 +158,7 @@ def crudRecetaIngrediente_detail(request, id):
         return Response("eliminado con éxito")
 
 
-# ------------------- HISTORIAL -------------------
+
 @api_view(['GET','POST'])
 def crudHistorial(request):
     if request.method == 'GET':
@@ -195,7 +195,7 @@ def crudHistorial_detail(request, id):
         return Response("eliminado con éxito")
 
 
-# ------------------- FAVORITO -------------------
+
 @api_view(['GET','POST'])
 def crudFavorito(request):
     if request.method == 'GET':

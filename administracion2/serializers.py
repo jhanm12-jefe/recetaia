@@ -3,21 +3,21 @@ from administracion2.models import Ingrediente, Receta, PasoReceta, RecetaIngred
 from administracion.models import User 
 
 
-# ------------------- INGREDIENTE -------------------
+
 class IngredienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingrediente
         fields = '__all__'
 
 
-# ------------------- RECETA -------------------
+
 class RecetaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Receta
         fields = '__all__'
 
 
-# ------------------- PASO RECETA -------------------
+
 class PasoRecetaSerializer(serializers.ModelSerializer):
     receta = RecetaSerializer(read_only=True)
     receta_id = serializers.PrimaryKeyRelatedField(
@@ -31,7 +31,7 @@ class PasoRecetaSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-# ------------------- RECETA INGREDIENTE -------------------
+
 class RecetaIngredienteSerializer(serializers.ModelSerializer):
     receta = RecetaSerializer(read_only=True)
     receta_id = serializers.PrimaryKeyRelatedField(
@@ -52,9 +52,9 @@ class RecetaIngredienteSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-# ------------------- HISTORIAL -------------------
+
 class HistorialSerializer(serializers.ModelSerializer):
-    usuario = serializers.StringRelatedField(read_only=True)  # muestra el nombre del usuario
+    usuario = serializers.StringRelatedField(read_only=True)
     usuario_id = serializers.PrimaryKeyRelatedField(
         queryset=User.objects.all(),
         source='usuario',
@@ -73,7 +73,7 @@ class HistorialSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-# ------------------- FAVORITO -------------------
+
 class FavoritoSerializer(serializers.ModelSerializer):
     usuario = serializers.StringRelatedField(read_only=True)
     usuario_id = serializers.PrimaryKeyRelatedField(
