@@ -66,5 +66,3 @@ urlpatterns = [
     path('favorito/<int:id>', showByRol),
     path('prueba',showByRol)
 ]
-
-#cambio
