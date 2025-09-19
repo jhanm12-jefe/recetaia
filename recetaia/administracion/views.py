@@ -4,7 +4,6 @@ from administracion.serializers import RolSerializer,UserSerializer, Suscripcion
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
-import requests
 
 
 @api_view(['GET'])
@@ -113,24 +112,3 @@ def crudSuscripcion_detail(request, id):
     if request.method == 'DELETE':
         suscripcion.delete()
         return Response("eliminada con éxito")
-    
-@api_view(['GET'])
-def showByRol(request,id):
-    users = User.objects.filter(rol_id = id)
-    cantidad = users.count()
-    serializer = UserSerializer(users, many = True)
-
-    
-    diccionario = {
-        "cantidad" : cantidad,
-        "datos"    : serializer.data
-    }
-    return Response(diccionario)
-
-@api_view(['GET'])
-def BuscarPais(request):
-    url = "https://restcountries.com/v3.1/name/bolivia"
-    resp = requests.get(url)
-    resp = resp.json()[0]
-    print(resp.get("name"))
-    return Response("exito")

@@ -7,6 +7,3 @@ docker-compose exec web bash
 python manage.py startapp nombre
 python manage.py makemigrations
 python manage.py migrate
-
-
-siempre hay que estar dentro del docker para ejecutar python

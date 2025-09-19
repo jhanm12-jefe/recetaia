@@ -23,8 +23,7 @@ from administracion.views import (
     crudRol,
     crudRol_detail,
     crudUser,
-    crudUser_detail,
-    showByRol,)
+    crudUser_detail,)
 
 from administracion2.views import (
     crudIngrediente,
@@ -40,11 +39,9 @@ from administracion2.views import (
     crudFavorito,
     crudFavorito_detail,
 )
-from ia.views import chatia
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('prueba/',prueba),
-    path('ia/',chatia),
     path('rol/',crudRol),
     path('user/',crudUser),
     path('rol/<int:id>',crudRol_detail),
@@ -63,6 +60,5 @@ urlpatterns = [
     path('historial/<int:id>', crudHistorial_detail),
     path('favorito/', crudFavorito),
     path('favorito/<int:id>', crudFavorito_detail),
-    path('favorito/<int:id>', showByRol),
-    path('prueba',showByRol)
 ]
+
